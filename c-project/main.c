@@ -5,7 +5,7 @@ student st_db[] = {STUDENT_INIT};
 /**
  * main - Entery Point
  *
- * Return : 0 on Success, 1 otherwise.
+ * Return: Returns 0 on Success
  **/
 
 int main(void)

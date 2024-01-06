@@ -148,7 +148,7 @@ bool SDB_ReadEntry(uint32 id)
 
 
 /**
- * SDB_GetList -
+ * SDB_GetList - Fills a List with All students IDs
  * @count: 
  *
  **/
@@ -173,7 +173,7 @@ bool SDB_IsIdExist(uint32 id)
 {
 	if (id == 0 || id < 0)
 	{
-		printf("Enter a Valid ID\n");
+		printf("Enter a Valid ID, Can't Be Zero\n");
 		return (false);
 	}
 	else
