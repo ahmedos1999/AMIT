@@ -2,7 +2,6 @@
 #include "SDB.h"
 
 student st_db[] = {STUDENT_INIT};
-
 /**
  * main - Entery Point
  *

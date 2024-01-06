@@ -2,7 +2,7 @@
 #include "SDB.h"
 
 extern student st_db[];
-uint32 num = 0;
+uint8 num = 0;
 uint32 inx ;
 int32 i = 0, j = 0;
 int32 history[5] = {111, 111, 111, 111, 111};
@@ -129,7 +129,7 @@ bool SDB_ReadEntry(uint32 id)
 	{
 		if (st_db[i].Student_ID == id)
 		{
-			printf("\nStuden Data in Slot No.%d\n", i);
+			printf("\nStuden Data in Slot No.%d\n", i + 1);
 			printf("\nStudent ID    : %d", st_db[i].Student_ID);
 			printf("\nStudent Year  : %d", st_db[i].Student_year);
 			printf("\nCourse1 ID    : %d", st_db[i].Course1_ID);
@@ -149,11 +149,18 @@ bool SDB_ReadEntry(uint32 id)
 
 /**
  * SDB_GetList -
- *
+ * @count: 
  *
  **/
-void SDB_GetList(uint8 * count, uint32 * list)
+void SDB_GetList(uint8 *count, uint32 *list)
 {
+	int iterator = 0;
+
+	for (iterator = 0; iterator < 10; iterator++)
+	{
+		if (st_db[iterator].Student_ID != 0)
+			list[iterator] = st_db[iterator].Student_ID;
+	}
 }
 
 
@@ -164,14 +171,22 @@ void SDB_GetList(uint8 * count, uint32 * list)
  **/
 bool SDB_IsIdExist(uint32 id)
 {
-	for (i = 0; i < num; i++)
+	if (id == 0 || id < 0)
 	{
-		if (st_db[i].Student_ID == id)
-		{
-			printf("\nSlot No.%d\n", i);
-			return (true);
-		}
-	}
-	if (i == num)
+		printf("Enter a Valid ID\n");
 		return (false);
+	}
+	else
+	{
+		for (i = 0; i < num; i++)
+		{
+			if (st_db[i].Student_ID == id)
+			{
+				printf("\nSlot No.%d\n", i + 1);
+				return (true);
+			}
+		}
+		if (i == num)
+			return (false);
+	}
 }

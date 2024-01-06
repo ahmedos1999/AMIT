@@ -3,7 +3,8 @@
 
 static uint8 choice = 0;
 static uint8 EXIT = 0;
-
+extern num;
+uint32 list[10] = {0};
 /**
  * SDB_action - Calls the Coresponding Function for the User's Choice.
  * @choice: The User Input, Represents the function No..
@@ -54,11 +55,22 @@ void SDB_action(uint8 choice)
 			printf("\nEnter the Student's ID to get his Data : ");
 			scanf("%d", &id);
 			while (getchar() != '\n');
-			SDB_ReadEntry(id);
+			if (id == 0 || id < 0)
+				printf("Enter a Valid ID\n");
+			else
+				SDB_ReadEntry(id);
 			break;
 		}
 		case 4:
 		{
+			int i = 0;
+			SDB_GetList (&num, &list);
+
+			printf("List of All Students IDs in DataBase:\n");
+			for(i = 0; i < num; i++)
+			{
+				printf("Slot%d : %d\n",i + 1, list[i]);
+			}
 			break;
 		}
 		case 5:
